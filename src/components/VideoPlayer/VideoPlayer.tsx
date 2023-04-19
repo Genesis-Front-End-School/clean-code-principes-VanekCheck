@@ -5,18 +5,7 @@ import {
   addToLocalStorage,
   getFromLocalStorage,
 } from "src/helpers/localStorage";
-
-export interface VideoPlayerProps {
-  id?: string;
-  src: string;
-  poster?: string;
-  muted?: boolean;
-  controls?: boolean;
-  autoPlay?: boolean;
-  loop?: boolean;
-  withPictureInPicture?: boolean;
-  width?: number | string;
-}
+import { VideoPlayerProps, IVideoPlayerRef } from "./types";
 
 const VideoPlayer: FC<VideoPlayerProps> = ({
   id,
@@ -29,14 +18,14 @@ const VideoPlayer: FC<VideoPlayerProps> = ({
   controls = true,
   withPictureInPicture = false,
 }) => {
-  const videoRef = useRef<any>(null);
+  const videoRef = useRef<IVideoPlayerRef>(null);
 
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
 
   useEffect(() => {
     const hls = new Hls();
 
-    if (src) {
+    if (src && videoRef.current) {
       hls.loadSource(src);
       hls.attachMedia(videoRef.current);
       const videoProgress = getFromLocalStorage(`videoProgress:${id}`);
@@ -51,10 +40,12 @@ const VideoPlayer: FC<VideoPlayerProps> = ({
   useEffect(() => {
     if (id) {
       const handleTabClose = () => {
-        addToLocalStorage(
-          `videoProgress:${id}`,
-          Math.floor(videoRef.current.currentTime)
-        );
+        if (videoRef.current) {
+          addToLocalStorage(
+            `videoProgress:${id}`,
+            Math.floor(videoRef.current.currentTime)
+          );
+        }
       };
 
       window.addEventListener("beforeunload", handleTabClose);
@@ -66,13 +57,16 @@ const VideoPlayer: FC<VideoPlayerProps> = ({
 
   const handlePictureInPicture = async () => {
     try {
-      await videoRef.current.requestPictureInPicture();
+      if (videoRef.current) {
+        await videoRef.current.requestPictureInPicture();
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {
+    if (!videoRef.current) return;
     switch (event.code) {
       case "ArrowUp":
         if (playbackSpeed < 15) {

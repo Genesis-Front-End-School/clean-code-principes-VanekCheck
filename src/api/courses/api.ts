@@ -1,4 +1,4 @@
-import privateApi from "src/configs/private-api";
+import privateApi from "src/configs/privateApi";
 import type { ICourses, ICourseWithLessons } from "./types";
 
 export const getCourses = async (): Promise<ICourses> => {

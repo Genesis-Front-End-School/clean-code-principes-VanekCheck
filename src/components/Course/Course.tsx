@@ -82,7 +82,7 @@ const Course: FC<ICourse> = ({
                 {getMinutes(duration)} minutes
               </Text>
 
-              {containsLockedLessons && (
+              {containsLockedLessons ? (
                 <>
                   <Center>
                     <Divider
@@ -93,16 +93,14 @@ const Course: FC<ICourse> = ({
                   </Center>
                   <LockIcon color={"#ADB5BD"} width={20} />
                 </>
-              )}
+              ) : null}
             </Group>
             <Group pt={10}>
-              {tags.map((tag) => {
-                return (
-                  <Badge key={tag} color='gray' radius='sm'>
-                    {tag}
-                  </Badge>
-                );
-              })}
+              {tags.map((tag) => (
+                <Badge key={tag} color='gray' radius='sm'>
+                  {tag}
+                </Badge>
+              ))}
             </Group>
           </Flex>
         </Box>
