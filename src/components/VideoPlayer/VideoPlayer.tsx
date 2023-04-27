@@ -1,11 +1,9 @@
 import { FC, useEffect, useRef, useState } from "react";
-import Hls from "hls.js";
 import { Button, Flex, Group, Image, Popover, Text } from "@mantine/core";
-import {
-  addToLocalStorage,
-  getFromLocalStorage,
-} from "src/helpers/localStorage";
+
 import { VideoPlayerProps, IVideoPlayerRef } from "./types";
+import { StorageService, VideoService } from "src/services";
+import { PLAYBACK_CHANGE_STEP, PLAYBACK_MAX_SPEED } from "src/constants/video";
 
 const VideoPlayer: FC<VideoPlayerProps> = ({
   id,
@@ -23,12 +21,12 @@ const VideoPlayer: FC<VideoPlayerProps> = ({
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
 
   useEffect(() => {
-    const hls = new Hls();
+    const videoInstance = new VideoService();
 
     if (src && videoRef.current) {
-      hls.loadSource(src);
-      hls.attachMedia(videoRef.current);
-      const videoProgress = getFromLocalStorage(`videoProgress:${id}`);
+      videoInstance.loadSrc(src);
+      videoInstance.attachVideo(videoRef.current);
+      const videoProgress = StorageService.getValue(`videoProgress:${id}`);
 
       if (id && videoProgress && videoRef && videoRef.current) {
         videoRef.current.currentTime = parseInt(videoProgress) || 0;
@@ -36,12 +34,12 @@ const VideoPlayer: FC<VideoPlayerProps> = ({
     }
   }, [videoRef, src, id]);
 
-  // TODO: move to custom hook
+  
   useEffect(() => {
     if (id) {
       const handleTabClose = () => {
         if (videoRef.current) {
-          addToLocalStorage(
+          StorageService.setValue(
             `videoProgress:${id}`,
             Math.floor(videoRef.current.currentTime)
           );
@@ -69,15 +67,15 @@ const VideoPlayer: FC<VideoPlayerProps> = ({
     if (!videoRef.current) return;
     switch (event.code) {
       case "ArrowUp":
-        if (playbackSpeed < 15) {
-          const newPlaybackRate = playbackSpeed + 0.25;
+        if (playbackSpeed < PLAYBACK_MAX_SPEED) {
+          const newPlaybackRate = playbackSpeed + PLAYBACK_CHANGE_STEP;
           setPlaybackSpeed(newPlaybackRate);
           videoRef.current.playbackRate = newPlaybackRate;
         }
         break;
       case "ArrowDown":
         if (playbackSpeed > 0) {
-          const newPlaybackRate = playbackSpeed - 0.25;
+          const newPlaybackRate = playbackSpeed - PLAYBACK_CHANGE_STEP;
           setPlaybackSpeed(newPlaybackRate);
           videoRef.current.playbackRate = newPlaybackRate;
         }

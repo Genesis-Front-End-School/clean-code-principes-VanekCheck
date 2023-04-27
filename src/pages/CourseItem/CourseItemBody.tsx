@@ -7,7 +7,7 @@ import VideoPlayer from "src/components/VideoPlayer/VideoPlayer";
 
 import CourseDetails from "./CourseDetails";
 
-const CourseItem = () => {
+const CourseItemBody = () => {
   const params = useParams<{ id: string }>();
 
   const { isLoading, data: course } = useCourseItemQuery(params.id || "");
@@ -88,4 +88,4 @@ const CourseItem = () => {
   );
 };
 
-export default CourseItem;
+export default CourseItemBody;

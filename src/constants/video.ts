@@ -1,0 +1,2 @@
+export const PLAYBACK_MAX_SPEED = 15
+export const PLAYBACK_CHANGE_STEP = 0.25

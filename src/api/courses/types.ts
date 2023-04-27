@@ -1,4 +1,3 @@
-
 export interface ICourse {
   id: string;
   title: string;
@@ -23,7 +22,7 @@ export interface ICourse {
 }
 
 export interface ICourses {
-  courses: ICourse[]
+  courses: ICourse[];
 }
 
 export interface ILesson {
@@ -36,10 +35,12 @@ export interface ILesson {
   link: string;
   previewImageLink: string;
   meta: null | {
-    difficulty: 'easy' | 'medium' | 'hard'
+    difficulty: TDifficulty;
   };
 }
 
-export interface ICourseWithLessons extends Omit<ICourse, 'lessonsCount'> {
-  lessons: ILesson[]
+export type TDifficulty = "easy" | "medium" | "hard";
+
+export interface ICourseWithLessons extends Omit<ICourse, "lessonsCount"> {
+  lessons: ILesson[];
 }
