@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useCourseItemQuery } from "src/api/courses/hooks";
 import Lesson from "src/components/Lesson/Lesson";
 import VideoPlayer from "src/components/VideoPlayer/VideoPlayer";
+import { ILesson } from "src/models";
 
 import CourseDetails from "./CourseDetails";
 
@@ -17,7 +18,7 @@ const CourseItemBody = () => {
 
   const [currentLessonId, setCurrentLessonId] = useState<string>("");
 
-  const currentLesson = lessons?.find(
+  const currentLesson: ILesson | undefined = lessons?.find(
     (lesson) => lesson.id === currentLessonId
   );
 
@@ -25,7 +26,7 @@ const CourseItemBody = () => {
     if (lessons && !currentLessonId) {
       setCurrentLessonId(lessons?.[0].id || "");
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lessons]);
 
   const handleLessonChange = (id: string) => {
@@ -74,7 +75,7 @@ const CourseItemBody = () => {
           Lessons
         </Title>
         <Flex direction={"column"} gap={"xl"}>
-          {lessons?.map((lesson) => (
+          {lessons?.map((lesson: ILesson) => (
             <Lesson
               key={lesson.id}
               handleLessonChange={handleLessonChange}

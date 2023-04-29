@@ -10,14 +10,18 @@ import {
 import { useState } from "react";
 
 import { useCoursesQuery } from "src/api/courses/hooks";
+
 import Course from "src/components/Course/Course";
 import { COURSES_PER_PAGE } from "src/constants/courses";
+import { ICourse } from "src/models";
 
 const Courses = () => {
   const { isLoading, data: courses } = useCoursesQuery();
 
-  const [activePage, setPage] = useState(1);
-  const totalPages = Math.ceil((courses?.length || 1) / COURSES_PER_PAGE);
+  const [activePage, setPage] = useState<number>(1);
+  const totalPages: number = Math.ceil(
+    (courses?.length || 1) / COURSES_PER_PAGE
+  );
 
   if (isLoading) {
     return (
@@ -37,7 +41,7 @@ const Courses = () => {
         Courses
       </Title>
       <Group mt={15} spacing={"sm"}>
-        {courses?.map((course, index) => {
+        {courses?.map((course: ICourse, index: number) => {
           if (
             index >= (activePage - 1) * COURSES_PER_PAGE &&
             index < activePage * COURSES_PER_PAGE

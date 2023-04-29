@@ -1,8 +1,8 @@
 import { Badge, Box, Grid, Group, Text, Timeline, Title } from "@mantine/core";
 import { FC } from "react";
-import { ICourseWithLessons } from "src/api/courses/types";
 import Rating from "src/components/Rating/Rating";
 import { getMinutes } from "src/helpers/time";
+import { ICourseWithLessons } from "src/models";
 
 const CourseDescriptionSide: FC<ICourseWithLessons> = ({
   title,
@@ -23,7 +23,7 @@ const CourseDescriptionSide: FC<ICourseWithLessons> = ({
 
       <Group pt={10} pb={10}>
         <Rating rating={rating} />
-        {tags.map((tag) => {
+        {tags.map((tag: string) => {
           return (
             <Badge key={tag} color='gray' radius='sm'>
               {tag}
@@ -51,7 +51,7 @@ const CourseDescriptionSide: FC<ICourseWithLessons> = ({
       <Box pt={20}>
         <Title order={5}>What you'll learn</Title>
         <Timeline pt={15}>
-          {meta.skills.map((skill) => {
+          {meta.skills.map((skill: string) => {
             return (
               <Timeline.Item
                 key={skill}

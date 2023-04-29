@@ -1,8 +1,8 @@
 import { Badge, Flex, Grid, Group } from "@mantine/core";
 import { FC } from "react";
-import { ICourseWithLessons } from "src/api/courses/types";
 import VideoPlayer from "src/components/VideoPlayer/VideoPlayer";
 import { convertToLocalDateString } from "src/helpers/time";
+import { ICourseWithLessons } from "src/models";
 
 const CoursePreviewSide: FC<ICourseWithLessons> = ({
   launchDate,
