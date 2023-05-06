@@ -1,16 +1,17 @@
 import axios, { AxiosError, isAxiosError } from "axios";
-import { toast } from "react-toastify";
 import { BASE_URL } from "src/constants/api";
-import { getFromLocalStorage } from "src/helpers/localStorage";
 import { removeUserFromLocalStorage } from "src/helpers/user";
+import { StorageService, NotifyService } from "src/services";
+
 import { useAuthStore } from "src/store/useAuthStore";
 
+//TODO: use Dependency inversion - create private and public API instances, so i can change to something else not axios
 const privateApi = axios.create({
   baseURL: BASE_URL,
 });
 
 privateApi.interceptors.request.use((config: any) => {
-  const apiToken = getFromLocalStorage("token");
+  const apiToken = StorageService.getValue("token");
 
   return {
     ...config,
@@ -30,9 +31,9 @@ privateApi.interceptors.response.use(
     if (error.response?.status === 401) {
       removeUserFromLocalStorage();
       useAuthStore.setState({ isLogged: false });
-      toast.error("Unauthorized");
+      NotifyService.error("Unauthorized");
     } else {
-      toast.error("Something went wrong");
+      NotifyService.error("Something went wrong");
     }
   }
 );

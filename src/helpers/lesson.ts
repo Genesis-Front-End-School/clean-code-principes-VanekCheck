@@ -1,8 +1,6 @@
-import { ILesson } from "src/api/courses/types";
+import { TDifficulty } from "src/api/courses/types";
 
-type Difficulty = NonNullable<ILesson["meta"]>["difficulty"];
-
-export const getDifficultyColor = (difficulty: Difficulty) => {
+export const getDifficultyColor = (difficulty: TDifficulty) => {
   switch (difficulty) {
     case "easy":
       return "green.8";

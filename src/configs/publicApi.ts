@@ -1,6 +1,6 @@
 import axios, { AxiosError, isAxiosError } from "axios";
-import { toast } from "react-toastify";
 import { BASE_URL } from "src/constants/api";
+import { NotifyService } from "src/services";
 
 const publicApi = axios.create({
   baseURL: BASE_URL,
@@ -15,7 +15,7 @@ publicApi.interceptors.response.use(
     if (!isAxiosError(error)) {
       throw new Error("Unknown error");
     }
-    toast.error("Something went wrong");
+    NotifyService.error("Something went wrong");
   }
 );
 export default publicApi;

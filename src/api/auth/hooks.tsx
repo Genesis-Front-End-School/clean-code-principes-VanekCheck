@@ -1,6 +1,6 @@
 import { useMutation } from "react-query";
 import queryClient from "src/configs/queryClient";
-import { addToLocalStorage } from "src/helpers/localStorage";
+import { StorageService } from "src/services";
 import { useAuthStore } from "src/store/useAuthStore";
 import { getAuthToken } from "./api";
 import type { IAuthResponse } from "./types";
@@ -16,7 +16,7 @@ export const useAuthTokenMutation = () => {
       });
     },
     onSuccess: ({ token }) => {
-      addToLocalStorage("token", token);
+      StorageService.setValue("token", token);
       setIsLogged(true)
 
       queryClient.invalidateQueries({ queryKey: ['courses'] })

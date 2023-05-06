@@ -45,10 +45,10 @@ const Course: FC<ICourse> = ({
         m={0}
         bg={"gray.2"}
         display={"grid"}
+        w={"100%"}
+        miw={"100%"}
         sx={{
           borderRadius: 5,
-          width: "100%",
-          minWidth: "100%",
           gridTemplateColumns: "minmax(0, 3fr) minmax(0, 7fr)",
         }}
       >
@@ -75,7 +75,7 @@ const Course: FC<ICourse> = ({
                 {lessonsCount} Lessons
               </Text>
               <Center>
-                <Divider size='sm' orientation='vertical' sx={{ height: 15 }} />
+                <Divider size='sm' orientation='vertical' h={15} />
               </Center>
 
               <Text color={"gray.7"} fz={"xs"}>
@@ -88,7 +88,7 @@ const Course: FC<ICourse> = ({
                     <Divider
                       size='sm'
                       orientation='vertical'
-                      sx={{ height: 15 }}
+                      h={15}
                     />
                   </Center>
                   <LockIcon color={"#ADB5BD"} width={20} />

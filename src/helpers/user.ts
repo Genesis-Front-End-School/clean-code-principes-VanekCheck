@@ -1,8 +1,7 @@
+import { StorageService } from "src/services";
 
-import { getFromLocalStorage, removeFromLocalStorage } from "./localStorage";
-
-export const getIsLoggedIn = () => getFromLocalStorage("token");
+export const getIsLoggedIn = () => StorageService.getValue("token");
 
 export const removeUserFromLocalStorage = () => {
-  removeFromLocalStorage("token");
+  StorageService.removeValue("token");
 };
