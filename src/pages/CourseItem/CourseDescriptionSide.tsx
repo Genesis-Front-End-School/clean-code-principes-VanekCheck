@@ -23,7 +23,7 @@ const CourseDescriptionSide: FC<ICourseWithLessons> = ({
 
       <Group pt={10} pb={10}>
         <Rating rating={rating} />
-        {tags.map((tag: string) => {
+        {tags.map((tag) => {
           return (
             <Badge key={tag} color='gray' radius='sm'>
               {tag}
