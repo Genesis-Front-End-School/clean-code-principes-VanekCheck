@@ -92,7 +92,7 @@ const Course: FC<ICourse> = ({
               ) : null}
             </Group>
             <Group pt={10}>
-              {tags.map((tag: string) => (
+              {tags.map((tag) => (
                 <Badge key={tag} color='gray' radius='sm'>
                   {tag}
                 </Badge>
