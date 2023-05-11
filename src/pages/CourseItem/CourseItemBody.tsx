@@ -40,7 +40,7 @@ const CourseItemBody = () => {
           minHeight: "95vh",
         }}
       >
-        <Loader />
+        <Loader data-testid={'loader'}/>
       </Center>
     );
   }

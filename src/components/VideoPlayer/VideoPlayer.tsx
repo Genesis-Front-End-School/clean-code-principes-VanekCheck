@@ -93,6 +93,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({
         onKeyDown={(e: any) => handleKeyDown(e)}
       >
         <video
+          data-testid={'video'}
           width={width}
           height={"auto"}
           ref={videoRef}

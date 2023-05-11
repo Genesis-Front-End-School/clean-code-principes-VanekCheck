@@ -16,7 +16,7 @@ import { getMinutes } from "src/helpers/time";
 import { getDifficultyColor } from "src/helpers/lesson";
 import { ILesson } from "src/models";
 
-interface ILessonProps extends ILesson {
+export interface ILessonProps extends ILesson {
   isActive: boolean;
   handleLessonChange: (id: string) => void;
 }
@@ -54,7 +54,7 @@ const Lesson: FC<ILessonProps> = ({
             <Image src={`${previewImageLink}/lesson-${order}.webp`} />
           ) : (
             <Overlay blur={15} center>
-              <LockIcon />
+              <LockIcon data-testid={'lock-icon'}/>
             </Overlay>
           )}
         </AspectRatio>
@@ -72,7 +72,9 @@ const Lesson: FC<ILessonProps> = ({
         </Title>
         <Text color={"gray.8"}>{getMinutes(duration)} minutes</Text>
         {difficulty && (
-          <Badge mt={10} w={100} color={getDifficultyColor(difficulty)}>{difficulty}</Badge>
+          <Badge mt={10} w={100} color={getDifficultyColor(difficulty)}>
+            {difficulty}
+          </Badge>
         )}
       </Grid.Col>
     </Grid>

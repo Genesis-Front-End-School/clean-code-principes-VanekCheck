@@ -14,6 +14,7 @@
 
 - `yarn install`
 - `yarn start`
+- `yarn test`
 
 
 ## Available Scripts

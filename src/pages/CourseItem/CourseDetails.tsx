@@ -20,6 +20,7 @@ const CourseDetails: FC<ICourseWithLessons> = (props) => {
           onClick={() => {
             navigate(Paths.courses);
           }}
+          data-testid={'arrow-left'}
         />
         Course Details
       </Title>
