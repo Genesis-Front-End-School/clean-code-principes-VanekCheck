@@ -18,7 +18,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({
 }) => {
   const videoRef = useRef<IVideoPlayerRef>(null);
 
-  const [playbackSpeed, setPlaybackSpeed] = useState(1);
+  const [playbackSpeed, setPlaybackSpeed] = useState<number>(1);
 
   useEffect(() => {
     const videoInstance = new VideoService();
@@ -26,7 +26,9 @@ const VideoPlayer: FC<VideoPlayerProps> = ({
     if (src && videoRef.current) {
       videoInstance.loadSrc(src);
       videoInstance.attachVideo(videoRef.current);
-      const videoProgress = StorageService.getValue(`videoProgress:${id}`);
+      const videoProgress: string = StorageService.getValue(
+        `videoProgress:${id}`
+      );
 
       if (id && videoProgress && videoRef && videoRef.current) {
         videoRef.current.currentTime = parseInt(videoProgress) || 0;
@@ -34,7 +36,6 @@ const VideoPlayer: FC<VideoPlayerProps> = ({
     }
   }, [videoRef, src, id]);
 
-  
   useEffect(() => {
     if (id) {
       const handleTabClose = () => {

@@ -1,12 +1,12 @@
 import { Box, Grid, Title } from "@mantine/core";
 import { FC } from "react";
-import { ICourseWithLessons } from "src/api/courses/types";
 
 import { ReactComponent as ArrowLeftIcon } from "src/assets/arrow-left.svg";
 import { useNavigate } from "react-router-dom";
 import { Paths } from "src/constants/paths";
 import CoursePreviewSide from "./CoursePreviewSide";
 import CourseDescriptionSide from "./CourseDescriptionSide";
+import { ICourseWithLessons } from "src/models";
 
 const CourseDetails: FC<ICourseWithLessons> = (props) => {
   const navigate = useNavigate();

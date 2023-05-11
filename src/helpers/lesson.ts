@@ -1,6 +1,6 @@
-import { TDifficulty } from "src/api/courses/types";
+import { TDifficulty } from "src/models";
 
-export const getDifficultyColor = (difficulty: TDifficulty) => {
+export const getDifficultyColor = (difficulty: TDifficulty): string => {
   switch (difficulty) {
     case "easy":
       return "green.8";

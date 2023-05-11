@@ -14,11 +14,11 @@ import {
 import { ReactComponent as LockIcon } from "src/assets/lock.svg";
 
 import { Link } from "react-router-dom";
-import { ICourse } from "src/api/courses/types";
 import { getMinutes } from "src/helpers/time";
 import CoursePreviewMedia from "../CoursePreviewMedia/CoursePreviewMedia";
 import { useHover } from "@mantine/hooks";
 import Rating from "../Rating/Rating";
+import { ICourse } from "src/models";
 
 const Course: FC<ICourse> = ({
   id,
@@ -85,18 +85,14 @@ const Course: FC<ICourse> = ({
               {containsLockedLessons ? (
                 <>
                   <Center>
-                    <Divider
-                      size='sm'
-                      orientation='vertical'
-                      h={15}
-                    />
+                    <Divider size='sm' orientation='vertical' h={15} />
                   </Center>
                   <LockIcon color={"#ADB5BD"} width={20} />
                 </>
               ) : null}
             </Group>
             <Group pt={10}>
-              {tags.map((tag) => (
+              {tags.map((tag: string) => (
                 <Badge key={tag} color='gray' radius='sm'>
                   {tag}
                 </Badge>

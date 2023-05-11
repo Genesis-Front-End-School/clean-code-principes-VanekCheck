@@ -5,13 +5,12 @@ import { StorageService, NotifyService } from "src/services";
 
 import { useAuthStore } from "src/store/useAuthStore";
 
-//TODO: use Dependency inversion - create private and public API instances, so i can change to something else not axios
 const privateApi = axios.create({
   baseURL: BASE_URL,
 });
 
 privateApi.interceptors.request.use((config: any) => {
-  const apiToken = StorageService.getValue("token");
+  const apiToken: string = StorageService.getValue("token");
 
   return {
     ...config,

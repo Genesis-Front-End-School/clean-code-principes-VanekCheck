@@ -9,12 +9,12 @@ import {
   Text,
   Title,
 } from "@mantine/core";
-import { ILesson } from "src/api/courses/types";
 import styles from "./lesson.module.scss";
 import cn from "classnames";
 import { ReactComponent as LockIcon } from "src/assets/lock.svg";
 import { getMinutes } from "src/helpers/time";
 import { getDifficultyColor } from "src/helpers/lesson";
+import { ILesson } from "src/models";
 
 interface ILessonProps extends ILesson {
   isActive: boolean;

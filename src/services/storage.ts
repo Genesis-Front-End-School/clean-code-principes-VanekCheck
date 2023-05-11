@@ -1,6 +1,6 @@
 const StorageService = {
   getValue: (property: string) => {
-    const storageValue = localStorage.getItem(property);
+    const storageValue: string | null = localStorage.getItem(property);
     const value = storageValue ? JSON.parse(storageValue) : null;
     return value;
   },

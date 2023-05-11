@@ -1,5 +1,8 @@
+import { CSSProperties } from "react";
+import { UUID } from "src/models";
+
 export interface VideoPlayerProps {
-  id?: string;
+  id?: UUID;
   src: string;
   poster?: string;
   muted?: boolean;
@@ -7,7 +10,7 @@ export interface VideoPlayerProps {
   autoPlay?: boolean;
   loop?: boolean;
   withPictureInPicture?: boolean;
-  width?: number | string;
+  width?: CSSProperties['width'];
 }
 
 export interface IVideoPlayerRef extends HTMLVideoElement {
