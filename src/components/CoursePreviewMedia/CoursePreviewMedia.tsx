@@ -18,7 +18,15 @@ const CoursePreviewMedia: FC<CoursePreviewMediaProps> = ({
       {hovered ? (
         <VideoPlayer src={videoSrc} muted loop controls={false} autoPlay />
       ) : (
-        <Image src={`${photoSrc}/cover.webp`} />
+        <Image
+          src={`${photoSrc}/cover.webp`}
+          sx={({ colorScheme }) => ({
+            filter:
+              colorScheme === "dark"
+                ? "brightness(70%) contrast(130%)"
+                : "none",
+          })}
+        />
       )}
     </Center>
   );

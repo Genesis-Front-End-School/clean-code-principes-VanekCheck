@@ -23,7 +23,7 @@ const CoursePreviewSide: FC<ICourseWithLessons> = ({
           >
             {status}
           </Badge>
-          <Badge color='gray' radius='sm' size={"lg"}>
+          <Badge color='gray.6' radius='sm' size={"lg"}>
             at {convertToLocalDateString(launchDate)}
           </Badge>
         </Flex>

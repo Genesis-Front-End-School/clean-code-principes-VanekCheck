@@ -9,8 +9,6 @@ import {
   Text,
   Title,
 } from "@mantine/core";
-import styles from "./lesson.module.scss";
-import cn from "classnames";
 import { ReactComponent as LockIcon } from "src/assets/lock.svg";
 import { getMinutes } from "src/helpers/time";
 import { getDifficultyColor } from "src/helpers/lesson";
@@ -33,13 +31,13 @@ const Lesson: FC<ILessonProps> = ({
   meta,
 }) => {
   const { difficulty } = meta || {};
+  const lessonBgColor = isActive ? "gray.3" : "gray.2";
   return (
     <Grid
       key={id}
       columns={5}
-      bg={"gray.2"}
+      bg={lessonBgColor}
       role={"button"}
-      className={cn(styles.lesson, { [styles.lessonActive]: isActive })}
       sx={{
         borderRadius: 5,
         cursor: status === "locked" ? "not-allowed" : "pointer",
@@ -49,12 +47,12 @@ const Lesson: FC<ILessonProps> = ({
       }}
     >
       <Grid.Col span={1}>
-        <AspectRatio ratio={16 / 9} maw={400} mx='auto'>
+        <AspectRatio ratio={16 / 9} maw={400} mx="auto">
           {status === "unlocked" ? (
             <Image src={`${previewImageLink}/lesson-${order}.webp`} />
           ) : (
             <Overlay blur={15} center>
-              <LockIcon data-testid={'lock-icon'}/>
+              <LockIcon data-testid={"lock-icon"} />
             </Overlay>
           )}
         </AspectRatio>

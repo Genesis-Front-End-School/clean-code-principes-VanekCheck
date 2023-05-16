@@ -1,5 +1,13 @@
 import { FC, useEffect, useRef, useState } from "react";
-import { Button, Flex, Group, Image, Popover, Text } from "@mantine/core";
+import {
+  Button,
+  Flex,
+  Group,
+  Image,
+  Popover,
+  Text,
+  useMantineColorScheme,
+} from "@mantine/core";
 
 import { VideoPlayerProps, IVideoPlayerRef } from "./types";
 import { StorageService, VideoService } from "src/services";
@@ -16,6 +24,8 @@ const VideoPlayer: FC<VideoPlayerProps> = ({
   controls = true,
   withPictureInPicture = false,
 }) => {
+  const { colorScheme } = useMantineColorScheme();
+  const btnColor = colorScheme === "dark" ? "gray.2" : "gray.6";
   const videoRef = useRef<IVideoPlayerRef>(null);
 
   const [playbackSpeed, setPlaybackSpeed] = useState<number>(1);
@@ -109,7 +119,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({
               <Text>current speed: {playbackSpeed}x</Text>
               <Popover width={200} position='bottom' withArrow shadow='md'>
                 <Popover.Target>
-                  <Button color={"gray"}>Hotkeys</Button>
+                  <Button color={btnColor}>Hotkeys</Button>
                 </Popover.Target>
                 <Popover.Dropdown w={"220px !important"}>
                   <Text size='sm'>Arrow Up - speed + 0.25</Text>
@@ -117,7 +127,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({
                 </Popover.Dropdown>
               </Popover>
             </Group>
-            <Button color={"gray"} onClick={handlePictureInPicture}>
+            <Button color={btnColor} onClick={handlePictureInPicture}>
               Picture In Picture
             </Button>
           </Flex>

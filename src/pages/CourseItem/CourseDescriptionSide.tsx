@@ -25,7 +25,7 @@ const CourseDescriptionSide: FC<ICourseWithLessons> = ({
         <Rating rating={rating} />
         {tags.map((tag: string) => {
           return (
-            <Badge key={tag} color='gray' radius='sm'>
+            <Badge key={tag} color='gray.6' radius='sm'>
               {tag}
             </Badge>
           );
