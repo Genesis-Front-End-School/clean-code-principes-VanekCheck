@@ -19,6 +19,7 @@ const CoursePreviewSide: FC<ICourseWithLessons> = ({
             color={status === "launched" ? "green" : "gray"}
             radius='sm'
             size={"lg"}
+            data-testid={'status-badge'}
           >
             {status}
           </Badge>

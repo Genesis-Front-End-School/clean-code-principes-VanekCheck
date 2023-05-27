@@ -6,14 +6,14 @@ import {
   Loader,
   Pagination,
   Title,
-} from "@mantine/core";
-import { useState } from "react";
+} from '@mantine/core';
+import { useState } from 'react';
 
-import { useCoursesQuery } from "src/api/courses/hooks";
+import { useCoursesQuery } from 'src/api/courses/hooks';
 
-import Course from "src/components/Course/Course";
-import { COURSES_PER_PAGE } from "src/constants/courses";
-import { ICourse } from "src/models";
+import Course from 'src/components/Course/Course';
+import { COURSES_PER_PAGE } from 'src/constants/courses';
+import { ICourse } from 'src/models';
 
 const Courses = () => {
   const { isLoading, data: courses } = useCoursesQuery();
@@ -27,20 +27,20 @@ const Courses = () => {
     return (
       <Center
         sx={{
-          minHeight: "95vh",
+          minHeight: '95vh',
         }}
       >
-        <Loader />
+        <Loader data-testid={'loader'} />
       </Center>
     );
   }
 
   return (
     <Container fluid pt={20}>
-      <Title align={"center"} color={"gray.7"}>
+      <Title align={'center'} color={'gray.7'}>
         Courses
       </Title>
-      <Group mt={15} spacing={"sm"}>
+      <Group mt={15} spacing={'sm'}>
         {courses?.map((course: ICourse, index: number) => {
           if (
             index >= (activePage - 1) * COURSES_PER_PAGE &&
@@ -52,7 +52,7 @@ const Courses = () => {
         })}
       </Group>
       {courses?.length && (
-        <Flex pt={50} pb={80} justify={"center"}>
+        <Flex pt={50} pb={80} justify={'center'}>
           <Pagination
             value={activePage}
             onChange={setPage}

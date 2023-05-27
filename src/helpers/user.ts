@@ -1,7 +1,7 @@
-import { StorageService } from "src/services";
+import { StorageService } from 'src/services';
 
-export const getIsLoggedIn = (): boolean => !!StorageService.getValue("token");
+export const getIsLoggedIn = (): boolean => !!StorageService.getValue('token');
 
 export const removeUserFromLocalStorage = (): void => {
-  StorageService.removeValue("token");
+  StorageService.removeValue('token');
 };

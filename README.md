@@ -17,6 +17,7 @@ https://drive.google.com/file/d/1BYXsio51vc2pZbHrEl-1J6mrogT4lr0a/view?usp=shari
 
 - `yarn install`
 - `yarn start`
+- `yarn test`
 
 
 ## Available Scripts

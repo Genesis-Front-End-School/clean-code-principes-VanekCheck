@@ -1,7 +1,7 @@
 import { Group, Rating as MantineRating, Text } from "@mantine/core";
 import { FC } from "react";
 
-interface RatingProps {
+export interface RatingProps {
   rating: number;
 }
 

@@ -1,7 +1,7 @@
 import { getIsLoggedIn, removeUserFromLocalStorage } from "src/helpers/user";
 import { create } from "zustand";
 
-type AuthState = {
+export type AuthState = {
   isLogged: boolean;
   setIsLogged: (isLogged: boolean) => void;
   logout: () => void;
