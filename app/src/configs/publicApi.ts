@@ -1,6 +1,6 @@
 import axios, { AxiosError, isAxiosError } from "axios";
 import { BASE_URL } from "src/constants/api";
-import { NotifyService } from "src/services";
+import { NotifyService } from "services-library";
 
 const publicApi = axios.create({
   baseURL: BASE_URL,

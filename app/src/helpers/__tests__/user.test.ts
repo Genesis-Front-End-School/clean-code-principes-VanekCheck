@@ -1,5 +1,5 @@
 import { getIsLoggedIn, removeUserFromLocalStorage } from '../user';
-import { StorageService } from 'src/services';
+import { StorageService } from 'services-library';
 
 const mockGetValue = jest.spyOn(StorageService, 'getValue');
 const mockRemoveValue = jest.spyOn(StorageService, 'removeValue');

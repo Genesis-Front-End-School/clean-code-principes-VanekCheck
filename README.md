@@ -12,9 +12,14 @@ https://drive.google.com/file/d/1BYXsio51vc2pZbHrEl-1J6mrogT4lr0a/view?usp=shari
 - hls.js
 - Mantine (ui library)
 - Zustand
+- Jest
 
 ## To run locally
+#### To build app-services
+- `cd app-services`
+- `yarn build`
 
+#### To run app
 - `yarn install`
 - `yarn start`
 - `yarn test`

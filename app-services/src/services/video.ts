@@ -1,4 +1,4 @@
-import Hls from "hls.js";
+import Hls from 'hls.js';
 
 class VideoService {
   videoInstance: Hls;
