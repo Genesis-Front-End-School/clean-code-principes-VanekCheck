@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 
 const NotifyService = {
   success: (notifyText: string) => toast.success(notifyText),

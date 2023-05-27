@@ -1,4 +1,4 @@
-import { StorageService } from 'src/services';
+import { StorageService } from 'services-library';
 
 export const getIsLoggedIn = (): boolean => !!StorageService.getValue('token');
 

@@ -1,6 +1,6 @@
 import { useMutation } from "react-query";
 import queryClient from "src/configs/queryClient";
-import { StorageService } from "src/services";
+import { StorageService } from "services-library";
 import { useAuthStore } from "src/store/useAuthStore";
 import { getAuthToken } from "./api";
 import type { IAuthResponse } from "./types";

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import CoursePreviewMedia from './CoursePreviewMedia';
 
-jest.mock('src/services');
+jest.mock('services-library');
 
 const coursePreviewMediaProps = {
   videoSrc: 'video/src/test',

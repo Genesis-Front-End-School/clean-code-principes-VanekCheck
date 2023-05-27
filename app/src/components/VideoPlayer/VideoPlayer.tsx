@@ -10,7 +10,7 @@ import {
 } from "@mantine/core";
 
 import { VideoPlayerProps, IVideoPlayerRef } from "./types";
-import { StorageService, VideoService } from "src/services";
+import { StorageService, VideoService } from "services-library";
 import { PLAYBACK_CHANGE_STEP, PLAYBACK_MAX_SPEED } from "src/constants/video";
 
 const VideoPlayer: FC<VideoPlayerProps> = ({

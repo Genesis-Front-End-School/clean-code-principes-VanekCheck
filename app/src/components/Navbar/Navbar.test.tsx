@@ -6,7 +6,7 @@ import { BASE_URL } from 'src/constants/api';
 import Navbar from './Navbar';
 
 jest.mock('src/store/useAuthStore');
-jest.mock('src/services');
+jest.mock('services-library');
 
 const logout = jest.fn();
 

@@ -1,7 +1,7 @@
 import axios, { AxiosError, isAxiosError } from "axios";
 import { BASE_URL } from "src/constants/api";
 import { removeUserFromLocalStorage } from "src/helpers/user";
-import { StorageService, NotifyService } from "src/services";
+import { StorageService, NotifyService } from "services-library";
 
 import { useAuthStore } from "src/store/useAuthStore";
 
